@@ -82,7 +82,11 @@ Si deseas contribuir a este proyecto, por favor sigue estos pasos:
 Licencia
 Este proyecto está bajo la licencia MIT con atribución.
 
-El sitio -> [Feria Artesanal]( [https://feria-artesanal-git-main-sanchezigns-projects.vercel.app/](https://feria-artesanal-1gumdlxkc-sanchezigns-projects.vercel.app/))
+## 🔗 Enlaces
+
+- 🚀 Demo: https://feria-artesanal.vercel.app/
+- - 💻 Código: https://github.com/sanchezign/Feria-Artesanal
+
 
 ## :::: Vista de HOME ::::
 
