@@ -13,25 +13,14 @@ const newsCarouselRoutes = require('./routes/news-carousel.routes')
 const PORT = process.env.PORT || 3000
 const app = express()
 
-// Connect DB
 mongoose
   .connect(process.env.DATABASE_URL)
   .then(() => console.info("✅ DB connected"))
   .catch((err) => console.error("❌ DB connection error:", err))
 
 app.use(express.json())
-
-// CORS - permitir tu frontend de Vercel
-const allowedOrigins = [
-  "http://localhost:5173",                        // desarrollo local
-  "http://localhost:3000",
-  process.env.FRONTEND_URL,                       // variable que vas a poner en Render
-]
-
 app.use(cors())
 
-
-// ROUTES
 app.use("/", authRoutes)
 app.use("/", userRoutes)
 app.use("/", shopRoutes)
