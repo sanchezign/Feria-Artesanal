@@ -1,18 +1,17 @@
 # Feria Artesanal
-(TRABAJO EN PROCESO)
 
 ## Configuración inicial para el Frontend y el Backend
 
 1. **Clonar el repositorio:**
 ```bash
-   git clone *poner git*
+   git clone https://github.com/sanchezign/Feria-Artesanal
 ```
 
 ### Configuración del Backend
 
 2. Navegar al directorio del backend:
 ```bash
-cd c21-05-ft-node-react/backend
+cd Feria-Artesanal/backend
 ```
 
 3. Instalar las dependencias:
