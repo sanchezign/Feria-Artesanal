@@ -82,7 +82,7 @@ Si deseas contribuir a este proyecto, por favor sigue estos pasos:
 Licencia
 Este proyecto está bajo la licencia MIT con atribución.
 
-El sitio -> [Feria Artesanal]( https://c21-05-ft-node-react-mirror-frontend-64qbwssi2-muyvisual.vercel.app/)
+El sitio -> [Feria Artesanal]( [https://c21-05-ft-node-react-mirror-frontend-64qbwssi2-muyvisual.vercel.app/](https://feria-artesanal-1gumdlxkc-sanchezigns-projects.vercel.app/))
 
 ## :::: Vista de HOME ::::
 
