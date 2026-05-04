@@ -15,9 +15,11 @@ const NewsCarousel = () => {
   const getNewsItems = async () => {
     try {
       const response = await api.get('/news-carousel')
-      setNewsItems(response.data)
+      // Protección extra
+      setNewsItems(Array.isArray(response.data) ? response.data : []);
     } catch (error) {
       console.error('Error al obtener novedades:', error)
+      setNewsItems([]); // importante
     } finally {
       setIsLoading(false);
     }
@@ -42,24 +44,22 @@ const NewsCarousel = () => {
       }}
       className="appear"
     >
-      {
-        isLoading
-          ? <SwiperSlide>
-            <div className="news-item animate-pulse" > </div>
+      {isLoading ? (
+        <SwiperSlide>
+          <div className="news-item animate-pulse" />
+        </SwiperSlide>
+      ) : (
+        newsItems.map((item) => (
+          <SwiperSlide key={item._id || Math.random()} >
+            <Link to={item.url || '#'} >
+              <div
+                className="news-item"
+                style={{ backgroundImage: `url(${item.image})` }}
+              />
+            </Link>
           </SwiperSlide>
-
-          : newsItems.map((item) => (
-            <SwiperSlide key={item._id} >
-              <Link to={item.url} >
-                <div
-                  className="news-item"
-                  style={{ backgroundImage: `url(${item.image})` }}
-                >
-                </div>
-              </Link>
-            </SwiperSlide>
-          ))
-      }
+        ))
+      )}
     </Swiper>
   );
 };
