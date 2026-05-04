@@ -39,7 +39,6 @@ const FeaturedShop = ({ shopId }) => {
   return (
     <>
       <h1 className="h-special">Tienda destacada</h1>
-
       <Link to={`/shop/${shopId}`}>
         <div
           className="relative m-auto max-w-screen-sm bg-cover bg-center"
@@ -71,7 +70,6 @@ const FeaturedShop = ({ shopId }) => {
                   }}
                 />
               )}
-
               {products[1] && (
                 <img
                   src={products[1].image || ''}
@@ -85,15 +83,15 @@ const FeaturedShop = ({ shopId }) => {
                   }}
                 />
               )}
-
               {(products[2] || shop.cover_url) && (
                 <img
                   src={products[2]?.image || shop.cover_url || ''}
                   alt={products[2]?.name || 'cover'}
-                  className="absolute transform translate-x-1/2 object-cover rounded-2xl shadow shadow-inner shadow-sm"
+                  className="absolute object-cover rounded-2xl shadow shadow-inner shadow-sm"
                   style={{
                     bottom: '100px',
-                    right: '324px',
+                    right: '50%',
+                    transform: 'translateX(50%)',
                     width: '320px',
                     height: '168px'
                   }}
