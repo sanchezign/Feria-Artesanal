@@ -92,7 +92,4 @@ El sitio -> [Feria Artesanal]( [https://c21-05-ft-node-react-mirror-frontend-64q
 
 ---
 
-## :::: Vista de SHOP ::::
-
-![alt text](docs/shop.png)
 
