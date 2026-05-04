@@ -63,10 +63,10 @@ const FeaturedShop = ({ shopId }) => {
                   alt={products[0].name || 'product'}
                   className="absolute object-cover rounded-md shadow shadow-inner shadow-sm"
                   style={{
-                    top: '20%',
-                    right: '8%',
-                    width: '24%',
-                    height: '16%'
+                    top: '224px',
+                    right: '118px',
+                    width: '146px',
+                    height: '120px'
                   }}
                 />
               )}
@@ -76,10 +76,10 @@ const FeaturedShop = ({ shopId }) => {
                   alt={products[1].name || 'product'}
                   className="absolute object-cover rounded-md shadow shadow-inner shadow-sm"
                   style={{
-                    top: '38%',
-                    right: '8%',
-                    width: '24%',
-                    height: '16%'
+                    top: '386px',
+                    right: '118px',
+                    width: '146px',
+                    height: '120px'
                   }}
                 />
               )}
@@ -89,11 +89,11 @@ const FeaturedShop = ({ shopId }) => {
                   alt={products[2]?.name || 'cover'}
                   className="absolute object-cover rounded-2xl shadow shadow-inner shadow-sm"
                   style={{
-                    bottom: '8%',
+                    bottom: '72px',
                     right: '50%',
                     transform: 'translateX(50%)',
-                    width: '52%',
-                    height: '18%'
+                    width: '320px',
+                    height: '168px'
                   }}
                 />
               )}
