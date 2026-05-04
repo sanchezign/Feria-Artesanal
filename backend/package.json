@@ -1,16 +1,11 @@
 {
   "name": "backend",
   "version": "0.0.1",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node --env-file=.env index.js",
-    "server": "nodemon --env-file=.env index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "concurrently": "^9.0.1",
@@ -20,12 +15,9 @@
     "express-async-handler": "^1.2.0",
     "express-jwt": "^8.4.1",
     "formidable": "^3.5.1",
-    "install": "^0.13.0",
     "jsonwebtoken": "^9.0.2",
     "lodash": "^4.17.21",
     "mongoose": "^8.7.0",
-    "morgan": "^1.10.0",
-    "nodemon": "^3.1.7",
-    "npm": "^10.9.0"
+    "morgan": "^1.10.0"
   }
 }
