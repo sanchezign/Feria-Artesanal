@@ -28,17 +28,8 @@ const allowedOrigins = [
   process.env.FRONTEND_URL,                       // variable que vas a poner en Render
 ]
 
-app.use(cors({
-  origin: function (origin, callback) {
-    // permitir requests sin origin (Postman, mobile, etc)
-    if (!origin) return callback(null, true)
-    if (allowedOrigins.includes(origin)) {
-      return callback(null, true)
-    }
-    return callback(new Error("Not allowed by CORS"))
-  },
-  credentials: true
-}))
+app.use(cors())
+
 
 // ROUTES
 app.use("/", authRoutes)
