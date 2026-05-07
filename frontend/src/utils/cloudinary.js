@@ -1,3 +1,4 @@
+import { getOptimizedImage } from '../utils/cloudinary';
 const CLOUD_NAME = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
 
 export const getOptimizedImage = (publicId, width = 600) => {
