@@ -1,32 +1,43 @@
+// frontend/src/utils/cloudinary.js
+
 const CLOUD_NAME = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
 
 export const getOptimizedImage = (publicIdOrUrl, width = 600) => {
   if (!publicIdOrUrl) return '';
 
-  // Si NO es URL de Cloudinary, asumimos que ya es un public_id directo
-  if (!publicIdOrUrl.includes('cloudinary.com')) {
-    return `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/c_limit,w_${width},q_auto,f_webp/${publicIdOrUrl}`;
+  // URLs de Unsplash u otros dominios externos → devolver tal cual (o con parámetro de tamaño)
+  if (publicIdOrUrl.includes('unsplash.com')) {
+    // Unsplash soporta el parámetro w= para redimensionar
+    const url = new URL(publicIdOrUrl);
+    url.searchParams.set('w', width);
+    url.searchParams.set('q', '80');
+    url.searchParams.set('fm', 'webp');
+    return url.toString();
   }
 
-  // Si ya es una URL de Cloudinary, extraemos el public_id correctamente
+  // URLs que no son de Cloudinary ni Unsplash → devolver tal cual
+  if (!publicIdOrUrl.includes('cloudinary.com')) {
+    // Si es un public_id directo (sin http), construimos la URL
+    if (!publicIdOrUrl.startsWith('http')) {
+      return `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/c_limit,w_${width},q_auto,f_webp/${publicIdOrUrl}`;
+    }
+    return publicIdOrUrl;
+  }
+
+  // URLs de Cloudinary → extraer public_id y aplicar transformaciones
   try {
-    // Eliminar transformaciones existentes y extraer el public_id
     const uploadIndex = publicIdOrUrl.indexOf('/upload/');
-    if (uploadIndex === -1) return publicIdOrUrl; // fallback a URL original
+    if (uploadIndex === -1) return publicIdOrUrl;
 
-    const afterUpload = publicIdOrUrl.substring(uploadIndex + 8); // después de "/upload/"
+    const afterUpload = publicIdOrUrl.substring(uploadIndex + 8);
+    // Saltar versión (v1234567890/) y transformaciones existentes (c_limit,w_600,...)
+    const cleaned = afterUpload
+      .replace(/^v\d+\//, '')                        // quita versión
+      .replace(/^(?:[a-z]{1,2}_[^/]+,?)+\//, '')     // quita transformaciones previas
+      .replace(/\.[^/.]+$/, '');                      // quita extensión
 
-    // Saltar versión (v1234567890/) si existe
-    const withoutVersion = afterUpload.replace(/^v\d+\//, '');
-
-    // Eliminar extensión del archivo
-    const publicId = withoutVersion.replace(/\.[^.]+$/, '');
-
-    // Saltar si era una URL con transformaciones (empieza con letras seguidas de _, como c_, w_, q_)
-    const cleanId = publicId.replace(/^(?:[a-z]_[^/]+,?)+\//, '');
-
-    return `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/c_limit,w_${width},q_auto,f_webp/${cleanId}`;
+    return `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/c_limit,w_${width},q_auto,f_webp/${cleaned}`;
   } catch {
-    return publicIdOrUrl; // fallback seguro a la URL original
+    return publicIdOrUrl; // fallback seguro
   }
 };
