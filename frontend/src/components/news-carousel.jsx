@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
 import api from '../api/axiosConfig'
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -15,11 +13,10 @@ const NewsCarousel = () => {
   const getNewsItems = async () => {
     try {
       const response = await api.get('/news-carousel')
-      // Protección extra
       setNewsItems(Array.isArray(response.data) ? response.data : []);
     } catch (error) {
       console.error('Error al obtener novedades:', error)
-      setNewsItems([]); // importante
+      setNewsItems([]);
     } finally {
       setIsLoading(false);
     }
@@ -50,13 +47,11 @@ const NewsCarousel = () => {
         </SwiperSlide>
       ) : (
         newsItems.map((item) => (
-          <SwiperSlide key={item._id || Math.random()} >
-            <Link to={item.url || '#'} >
-              <div
-                className="news-item"
-                style={{ backgroundImage: `url(${item.image})` }}
-              />
-            </Link>
+          <SwiperSlide key={item._id || Math.random()}>
+            <div
+              className="news-item"
+              style={{ backgroundImage: `url(${item.image})` }}
+            />
           </SwiperSlide>
         ))
       )}
@@ -64,4 +59,4 @@ const NewsCarousel = () => {
   );
 };
 
-export default NewsCarousel
+export default NewsCarousel;
