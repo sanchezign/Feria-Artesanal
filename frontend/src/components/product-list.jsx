@@ -19,7 +19,9 @@ const ProductList = ({ products = [], isLoading }) => {
           <div className={`text-left hover:scale-105 ease-in-out duration-200 appear`} >
             <div 
               className="relative aspect-square rounded-3xl bg-cover bg-center bg-neutral-500 grid place-items-center" 
-              style={{ backgroundImage: `url(${product.image})` }}
+              style={{ 
+  backgroundImage: `url(${getOptimizedImage(product.image, 450)})` 
+}}
             >
               <span className="tag-left top-5 text-xl">
                 $ <NumberFormatter number={product.price} /> 
