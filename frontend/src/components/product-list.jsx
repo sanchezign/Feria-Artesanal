@@ -24,9 +24,9 @@ const ProductList = ({ products = [], isLoading }) => {
                 loading="lazy"
                 className="absolute inset-0 w-full h-full object-cover rounded-3xl"
               />
-              <span className="tag-left top-5 text-xl relative z-10">
-                $ <NumberFormatter number={product.price} />
-              </span>
+              <span className="tag-left top-5 text-xl z-10">
+  $ <NumberFormatter number={product.price} />
+</span>
               <HeartIcon className="h-10 absolute top-5 right-5 hover:scale-125 ease-in-out duration-200 z-10" />
               {!product.image && (
                 <div className="flex flex-col items-center z-10">
