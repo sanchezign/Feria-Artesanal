@@ -21,6 +21,8 @@ mongoose
 app.use(express.json())
 app.use(cors())
 
+app.get('/', (req, res) => res.send('OK'))
+
 app.use("/", authRoutes)
 app.use("/", userRoutes)
 app.use("/", shopRoutes)
