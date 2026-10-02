@@ -11,7 +11,6 @@ function generateToken(user) {
 
 // Iniciar sesión
 async function signin(req, res) {
-  console.log(req.body)
   const { email, password } = req.body
   const user = await User.findOne({ email }) //? no funciona dentro del try
 
@@ -25,7 +24,6 @@ async function signin(req, res) {
     }
 
     const token = generateToken(user)
-    console.log(token)
     res.cookie('t', token, { expire: new Date() + 9999 })
     const { _id, email, name, user_type, image_url, shop_id, cart, favorites } = user
     return res.json(

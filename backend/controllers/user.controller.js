@@ -13,6 +13,9 @@ const create = async (req, res) => {
       })
     }
 
+    // Nadie puede registrarse como administrador desde la API
+    if (req.body.user_type === 'administrator') delete req.body.user_type
+
     // Crear nuevo usuario
     const user = new User(req.body)
     await user.save()
@@ -69,6 +72,8 @@ const list = async (req, res) => {
 const update = async (req, res) => {
   try {
     let user = req.profile
+    // Nadie puede ascenderse a administrador desde la API
+    if (req.body.user_type === 'administrator') delete req.body.user_type
     user = extend(user, req.body)
     // user = deepMerge(user, req.body)
     // console.log(user)
@@ -112,14 +117,21 @@ const isSeller = (req, res, next) => {
   next()
 }
 
-const isAdmin = (req, res, next) => {
-  const isAdmin = req.profile && req.profile.user_type === 'admin'
-  if (!isAdmin) {
+// Verifica que el usuario autenticado (token) sea administrador
+const isAdmin = async (req, res, next) => {
+  try {
+    const user = req.auth?._id ? await User.findById(req.auth._id) : null
+    if (!user || user.user_type !== 'administrator') {
+      return res.status(403).json({
+        error: "User is not an admin"
+      })
+    }
+    next()
+  } catch (err) {
     return res.status(403).json({
       error: "User is not an admin"
     })
   }
-  next()
 }
 
 
