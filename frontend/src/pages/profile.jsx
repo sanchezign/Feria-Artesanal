@@ -104,7 +104,7 @@ const Profile = () => {
               type="file"
               accept="image/*"
               {...register('image_url')}
-              className="mt-1 p-2 w-full border rounded-md bg-transparent focus:outline-none focus:border-yellow-300"
+              className="mt-1 p-2 w-full border rounded-md bg-transparent focus:outline-hidden focus:border-yellow-300"
             />
           </div>
           <div className="mb-4">
@@ -112,7 +112,7 @@ const Profile = () => {
             <input
               type="text"
               {...register('name', { required: 'El nombre es requerido' })}
-              className="mt-1 p-2 w-full border rounded-md bg-transparent focus:outline-none focus:border-yellow-300"
+              className="mt-1 p-2 w-full border rounded-md bg-transparent focus:outline-hidden focus:border-yellow-300"
             />
             {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>}
           </div>
@@ -121,13 +121,13 @@ const Profile = () => {
             <input
               type="email"
               {...register('email', { required: 'El email es requerido' })}
-              className="mt-1 p-2 w-full border rounded-md bg-transparent focus:outline-none focus:border-yellow-300"
+              className="mt-1 p-2 w-full border rounded-md bg-transparent focus:outline-hidden focus:border-yellow-300"
             />
             {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
           </div>
           <button
             type="submit"
-            className={`relative overflow-hidden w-full py-2 px-4 text-white font-semibold rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-400
+            className={`relative overflow-hidden w-full py-2 px-4 text-white font-semibold rounded-md shadow-md focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-yellow-400
             ${!isValid ? 'bg-gray-400 cursor-not-allowed' : 'bg-yellow-500 hover:bg-yellow-400'}`}
             disabled={!isValid || isUploading}
           >

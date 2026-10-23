@@ -37,7 +37,7 @@ const Product = (id) => {
         return (
             <div className="p-3 sm:p-5 sm:m-5 text-left text-sm sm:text-base rounded-xl shadow-2xl">
                 <img 
-                  className="w-3/4 h-auto rounded mx-auto" 
+                  className="w-3/4 h-auto rounded-sm mx-auto" 
                   src={getOptimizedImage(product.image, 900)}
                   alt={product.name}
                   loading="eager"
@@ -52,22 +52,22 @@ const Product = (id) => {
                 <p className="pt-2">Stock disponible: {product.stock}</p>
                 <nav>
                     <span>
-                        <button className="p-2 hover:text-yellow-600 cursor-pointer border rounded shadow" onClick={decreaseUnit}>
+                        <button className="p-2 hover:text-yellow-600 cursor-pointer border rounded-sm shadow-sm" onClick={decreaseUnit}>
                             -
                         </button>
-                        <button className="m-1 p-2 hover:text-yellow-600 cursor-pointer border rounded shadow">
+                        <button className="m-1 p-2 hover:text-yellow-600 cursor-pointer border rounded-sm shadow-sm">
                             Cantidad: {unit}
                         </button>
-                        <button className="p-2 hover:text-yellow-600 cursor-pointer border rounded shadow" onClick={IncreaseUnit}>
+                        <button className="p-2 hover:text-yellow-600 cursor-pointer border rounded-sm shadow-sm" onClick={IncreaseUnit}>
                             +
                         </button>
                     </span>
 
-                    <button className="m-3 p-2 hover:text-yellow-600 cursor-pointer border rounded shadow">
+                    <button className="m-3 p-2 hover:text-yellow-600 cursor-pointer border rounded-sm shadow-sm">
                         <Link>Añadir al carrito</Link>
                     </button>
 
-                    <button className="m-3 p-2 hover:text-yellow-600 cursor-pointer border rounded shadow">
+                    <button className="m-3 p-2 hover:text-yellow-600 cursor-pointer border rounded-sm shadow-sm">
                         <Link to="/cart" className="flex">
                             Ver carrito <ShoppingCartIcon className="pl-px h-5 w-5" />
                         </Link>
