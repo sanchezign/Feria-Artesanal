@@ -44,7 +44,7 @@ const Shop = () => {
     <Layout>
       <SearchBar />
       <div style={{ backgroundImage: `url(${shop.cover_url})` }} alt="Cover" className="hero-image"></div>
-      <main className="p-10 pt-14 sm:pt-20 min-h-screen max-w-screen-2xl mx-auto relative">
+      <main className="p-10 pt-14 sm:pt-20 min-h-screen max-w-(--breakpoint-2xl) mx-auto relative">
         <img src={shop.logo_url} alt="Logo" className="w-24 -top-12 sm:w-36 sm:-top-20 aspect-square object-cover rounded-full absolute z-10 bg-neutral-300" />
         {auth.user?.shop_id == shopId && (
           <Link to={'/create-product'} className="p-3 py-2 top-2 right-10 rounded-3xl absolute z-10 bg-secondary hover:bg-yellow-500">

@@ -62,7 +62,7 @@ const Login = () => {
                   message: 'Email no es válido',
                 },
               })}
-              className="mt-1 p-2 w-full border rounded-md bg-transparent focus:outline-none focus:border-yellow-300"
+              className="mt-1 p-2 w-full border rounded-md bg-transparent focus:outline-hidden focus:border-yellow-300"
             />
             {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
           </div>
@@ -80,14 +80,14 @@ const Login = () => {
                   message: 'La contraseña debe tener mínimo 6 caracteres',
                 },
               })}
-              className="mt-1 p-2 w-full border rounded-md bg-transparent focus:outline-none  focus:border-yellow-300"
+              className="mt-1 p-2 w-full border rounded-md bg-transparent focus:outline-hidden  focus:border-yellow-300"
             />
             {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>}
           </div>
           <button
             type="submit"
             className={
-              `relative overflow-hidden w-full py-2 px-4 bg-yellow-500 hover:bg-yellow-400 text-white font-semibold rounded-md shadow-md focus:outline-none
+              `relative overflow-hidden w-full py-2 px-4 bg-yellow-500 hover:bg-yellow-400 text-white font-semibold rounded-md shadow-md focus:outline-hidden
             ${!isValid ? 'bg-gray-400 cursor-not-allowed' : 'bg-yellow-500 hover:bg-yellow-400'}
             `}
             disabled={!isValid} // Desactiva el botón si el formulario no es válido

@@ -75,7 +75,7 @@ const CreateProduct = () => {
               <input
                 type="text"
                 {...register('name', { required: 'El nombre es requerido' })}
-                className="mt-1 p-2 w-full border rounded-md bg-transparent focus:outline-none focus:border-yellow-300"
+                className="mt-1 p-2 w-full border rounded-md bg-transparent focus:outline-hidden focus:border-yellow-300"
               />
               {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>}
             </div>
@@ -83,7 +83,7 @@ const CreateProduct = () => {
               <label className="block text-sm font-medium">Descripción</label>
               <textarea
                 {...register('description')}
-                className="mt-1 p-2 w-full border rounded-md bg-transparent focus:outline-none focus:border-yellow-300"
+                className="mt-1 p-2 w-full border rounded-md bg-transparent focus:outline-hidden focus:border-yellow-300"
               />
             </div>
             <div className="mb-4">
@@ -92,7 +92,7 @@ const CreateProduct = () => {
                 type="number"
                 {...register( 'price', {required: 'El precio es requerido'} )}
                 onInput={handleNumberInput}
-                className="mt-1 p-2 w-full border rounded-md bg-transparent focus:outline-none focus:border-yellow-300"
+                className="mt-1 p-2 w-full border rounded-md bg-transparent focus:outline-hidden focus:border-yellow-300"
               />
               {errors.price && <p className="text-red-500 text-sm mt-1">{errors.price.message}</p>}
             </div>
@@ -103,7 +103,7 @@ const CreateProduct = () => {
                 min={1}
                 onInput={handleNumberInput}
                 {...register('stock', { required: 'El stock es requerido' })}
-                className="mt-1 p-2 w-full border rounded-md bg-transparent focus:outline-none focus:border-yellow-300"
+                className="mt-1 p-2 w-full border rounded-md bg-transparent focus:outline-hidden focus:border-yellow-300"
               />
               {errors.stock && <p className="text-red-500 text-sm mt-1">{errors.stock.message}</p>}
             </div>
@@ -111,7 +111,7 @@ const CreateProduct = () => {
               <label className="block text-sm font-medium">Categoría *</label>
               <select
                 {...register('category_id', { required: 'La categoría es requerida' })}
-                className="mt-1 p-3 w-full border rounded-md clr-bg focus:outline-none focus:border-yellow-300 transition ease-in-out"
+                className="mt-1 p-3 w-full border rounded-md clr-bg focus:outline-hidden focus:border-yellow-300 transition ease-in-out"
               >
                 <option value="" className="m-10">Selecciona una categoría</option>
                 {categories.map(category => (
@@ -127,7 +127,7 @@ const CreateProduct = () => {
               <input
                 type="text"
                 {...register('color')}
-                className="mt-1 p-2 w-full border rounded-md bg-transparent focus:outline-none focus:border-yellow-300"
+                className="mt-1 p-2 w-full border rounded-md bg-transparent focus:outline-hidden focus:border-yellow-300"
               />
             </div>
             <div className="mb-4">
@@ -135,7 +135,7 @@ const CreateProduct = () => {
               <input
                 type="text"
                 {...register('material')}
-                className="mt-1 p-2 w-full border rounded-md bg-transparent focus:outline-none focus:border-yellow-300"
+                className="mt-1 p-2 w-full border rounded-md bg-transparent focus:outline-hidden focus:border-yellow-300"
               />
             </div>
             <div className="mb-4">
@@ -143,7 +143,7 @@ const CreateProduct = () => {
               <input
                 type="text"
                 {...register('size')}
-                className="mt-1 p-2 w-full border rounded-md bg-transparent focus:outline-none focus:border-yellow-300"
+                className="mt-1 p-2 w-full border rounded-md bg-transparent focus:outline-hidden focus:border-yellow-300"
               />
             </div>
             <div className="mb-4">
@@ -152,12 +152,12 @@ const CreateProduct = () => {
                 type="file"
                 accept="image/*"
                 {...register('image', { required: 'La imagen es requerida' })}
-                className="mt-1 p-2 w-full border rounded-md bg-transparent focus:outline-none focus:border-yellow-300"
+                className="mt-1 p-2 w-full border rounded-md bg-transparent focus:outline-hidden focus:border-yellow-300"
               />
             </div>
             <button
               type="submit"
-              className={`relative overflow-hidden w-full py-2 px-4 text-white font-semibold rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-400 ${!isValid ? 'bg-gray-400 cursor-not-allowed' : 'bg-yellow-500 hover:bg-yellow-400'}`}
+              className={`relative overflow-hidden w-full py-2 px-4 text-white font-semibold rounded-md shadow-md focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-yellow-400 ${!isValid ? 'bg-gray-400 cursor-not-allowed' : 'bg-yellow-500 hover:bg-yellow-400'}`}
               disabled={!isValid || isUploading}
             >
               {isLoading && <div className="absolute inset-0 bg-yellow-300 animate-load"></div>}

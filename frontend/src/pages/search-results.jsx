@@ -35,7 +35,7 @@ const SearchResults = () => {
   return (
     <Layout>
       <SearchBar initialQuery={q} />
-      <main className="p-10 min-h-screen max-w-screen-2xl mx-auto">
+      <main className="p-10 min-h-screen max-w-(--breakpoint-2xl) mx-auto">
         <div>
           <h1 className="h-special h-special-left mt-0">{q ? q : 'Todos los productos'}</h1>
           <ProductList products={products} isLoading={isLoading} />

@@ -10,7 +10,7 @@ const Cart = () => {
 
   return (
     <Layout>
-      <main className="p-5 sm:p-10 min-h-screen max-w-screen-md m-auto">
+      <main className="p-5 sm:p-10 min-h-screen max-w-(--breakpoint-md) m-auto">
         <h1 className="text-2xl font-bold mb-6">Carrito</h1>
         {cart.length === 0 ? (
           <p>No hay productos en el carrito.</p>

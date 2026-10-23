@@ -19,7 +19,7 @@ const Checkout = () => {
 
   return (
     <Layout>
-      <main className="p-5 sm:p-10 min-h-screen max-w-screen-sm m-auto">
+      <main className="p-5 sm:p-10 min-h-screen max-w-(--breakpoint-sm) m-auto">
         <h1 className="text-2xl font-bold mb-6">Checkout</h1>
         <div className="mb-6">
           {cart.length === 0 ? (

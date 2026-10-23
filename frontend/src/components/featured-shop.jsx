@@ -38,7 +38,7 @@ const FeaturedShop = ({ shopId }) => {
       <h1 className="h-special">Tienda destacada</h1>
       <Link to={`/shop/${shopId}`}>
         <div
-          className="relative scale-90 m-auto max-w-screen-sm bg-cover bg-center"
+          className="relative scale-90 m-auto max-w-(--breakpoint-sm) bg-cover bg-center"
           style={{ backgroundImage: `url(${shopImg})`, aspectRatio: '1284/1719' }}
         >
           <img
@@ -52,19 +52,19 @@ const FeaturedShop = ({ shopId }) => {
               <img
                 src={products[0].image}
                 alt={products[0].name}
-                className="absolute object-cover rounded-md shadow shadow-inner shadow-sm"
+                className="absolute object-cover rounded-md shadow-sm shadow-inner shadow-xs"
                 style={{ top: '224px', right: '118px', width: '146px', height: '120px' }}
               />
               <img
                 src={products[1].image}
                 alt={products[1].name}
-                className="absolute object-cover rounded-md shadow shadow-inner shadow-sm"
+                className="absolute object-cover rounded-md shadow-sm shadow-inner shadow-xs"
                 style={{ top: '386px', right: '118px', width: '146px', height: '120px' }}
               />
               <img
                 src={shop.cover_url}
                 alt={products[2].name}
-                className="absolute transform translate-x-1/2 object-cover rounded-2xl shadow shadow-inner shadow-sm"
+                className="absolute transform translate-x-1/2 object-cover rounded-2xl shadow-sm shadow-inner shadow-xs"
                 style={{ bottom: '100px', right: '324px', width: '320px', height: '168px' }}
               />
             </>

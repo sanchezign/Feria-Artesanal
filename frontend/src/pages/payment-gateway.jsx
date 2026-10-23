@@ -17,12 +17,12 @@ const PaymentGateway = ({ onPaymentSuccess, onPaymentFailure }) => {
   };
 
   return (
-    <div className="payment-gateway p-5 max-w-screen-md">
+    <div className="payment-gateway p-5 max-w-(--breakpoint-md)">
       <h1 className="text-2xl font-bold mb-6">Pasarela de Pago Falsa</h1>
       <div className="mb-4">
         <label className="block text-sm font-medium">Aprobar pago:</label>
         <select
-          className="mt-1 p-3 w-full border rounded-md clr-bg focus:outline-none focus:border-yellow-300 transition ease-in-out"
+          className="mt-1 p-3 w-full border rounded-md clr-bg focus:outline-hidden focus:border-yellow-300 transition ease-in-out"
           value={isApproved}
           onChange={(e) => setIsApproved(e.target.value === 'true')}
         >
@@ -32,7 +32,7 @@ const PaymentGateway = ({ onPaymentSuccess, onPaymentFailure }) => {
         </select>
       </div>
       <button
-        className={`relative overflow-hidden w-full py-2 px-4 text-white bg-yellow-500 font-semibold rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-400`}
+        className={`relative overflow-hidden w-full py-2 px-4 text-white bg-yellow-500 font-semibold rounded-md shadow-md focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-yellow-400`}
         onClick={handlePayment}
       >
         Procesar pago

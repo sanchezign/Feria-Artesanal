@@ -107,7 +107,7 @@ const SearchBar = ({ initialQuery = '' }) => {
         onChange={handleInputChange}
         onKeyDown={handleKeyPress}
         onBlur={handleBlur}
-        className="absolute to h-12 w-full p-4 border border-neutral-500 rounded-full shadow-2xl focus:outline-none caret-yellow-500"
+        className="absolute to h-12 w-full p-4 border border-neutral-500 rounded-full shadow-2xl focus:outline-hidden caret-yellow-500"
         placeholder="Buscar..."
         style={{ backgroundColor: 'var(--clr-bg)' }}
       />

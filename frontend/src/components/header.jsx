@@ -27,7 +27,7 @@ const Header = () => {
   }, [])
 
   return (
-    <header className="flex items-center justify-between p-5 px-10 max-w-screen-2xl mx-auto">
+    <header className="flex items-center justify-between p-5 px-10 max-w-(--breakpoint-2xl) mx-auto">
       <Link to="/">
         <img src={logo} alt="Logo" className="w-36" />
       </Link>
