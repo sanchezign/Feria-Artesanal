@@ -13,13 +13,34 @@ const newsCarouselRoutes = require('./routes/news-carousel.routes')
 const PORT = process.env.PORT || 3000
 const app = express()
 
-mongoose
-  .connect(process.env.DATABASE_URL)
-  .then(() => console.info("✅ DB connected"))
-  .catch((err) => console.error("❌ DB connection error:", err))
+// En serverless una instancia puede quedar viva tras un fallo de conexión,
+// así que se reintenta en el siguiente request en vez de conectar una sola vez
+let dbConnection = null
+const connectDB = () => {
+  if (mongoose.connection.readyState === 1) return Promise.resolve()
+  if (!dbConnection) {
+    dbConnection = mongoose
+      .connect(process.env.DATABASE_URL, { serverSelectionTimeoutMS: 10000 })
+      .then(() => console.info("✅ DB connected"))
+      .catch((err) => {
+        dbConnection = null
+        console.error("❌ DB connection error:", err)
+        throw err
+      })
+  }
+  return dbConnection
+}
+
+connectDB().catch(() => {})
 
 app.use(express.json())
 app.use(cors())
+
+app.use('/api', (req, res, next) => {
+  connectDB()
+    .then(() => next())
+    .catch(() => res.status(503).json({ error: 'Base de datos no disponible' }))
+})
 
 app.get('/', (req, res) => res.send('OK'))
 
