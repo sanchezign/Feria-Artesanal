@@ -31,6 +31,11 @@ app.use("/", orderRoutes)
 app.use("/", categoryRoutes)
 app.use("/", newsCarouselRoutes)
 
-app.listen(PORT, '0.0.0.0', () => {
-  console.info(`🚀 Server listening on port ${PORT}`)
-})
+// En Vercel la app se exporta como función; en local se levanta el servidor
+if (!process.env.VERCEL) {
+  app.listen(PORT, '0.0.0.0', () => {
+    console.info(`🚀 Server listening on port ${PORT}`)
+  })
+}
+
+module.exports = app
