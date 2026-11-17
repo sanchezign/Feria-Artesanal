@@ -47,7 +47,7 @@ Cuenta de vendedor con una tienda y productos ya cargados, para probar el flujo 
 | Backend | Node.js, Express, Mongoose, JSON Web Token (`jsonwebtoken`, `express-jwt`) |
 | Base de datos | MongoDB Atlas |
 | Imágenes | Cloudinary |
-| Despliegue | Vercel (frontend) y Render (API) |
+| Despliegue | Vercel (frontend y API en el mismo proyecto) |
 
 ---
 
@@ -153,10 +153,12 @@ Las imágenes se suben directamente desde el navegador, por lo que se necesita u
 
 ## Despliegue
 
+Todo corre en un solo proyecto de Vercel con dos servicios (ver `vercel.json`): `/api/*` va al backend Express y el resto al frontend. Como comparten dominio, el frontend usa `/api` y no hace falta `VITE_API_BASE_URL`.
+
 | Servicio | Plataforma | Variables de entorno |
 | --- | --- | --- |
-| Frontend | Vercel (raíz del proyecto: `frontend`, framework: Vite) | `VITE_API_BASE_URL` (URL pública de la API, terminada en `/api`), `VITE_CLOUDINARY_CLOUD_NAME`, `VITE_CLOUDINARY_UPLOAD_PRESET` |
-| API | Render (raíz: `backend`, comando de inicio: `npm start`) | `DATABASE_URL`, `JWT_SECRET` |
+| Frontend | Vercel, servicio `frontend` (raíz: `frontend`, framework: Vite) | `VITE_CLOUDINARY_CLOUD_NAME`, `VITE_CLOUDINARY_UPLOAD_PRESET` |
+| API | Vercel, servicio `backend` (raíz: `backend`, framework: Express, entrada: `index.js`) | `DATABASE_URL`, `JWT_SECRET` |
 
 En MongoDB Atlas, habilitar el acceso desde cualquier IP (**Network Access → 0.0.0.0/0**) para que el servidor desplegado pueda conectarse.
 
